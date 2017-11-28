@@ -1,0 +1,52 @@
+<aura:component controller="FTestController">
+    <aura:attribute name="newTestCase" type="Test_Case__c" default="{'sobjectType': 'Test_Case__c',
+                                                                     'Title__c': '',
+                                                                     'Description__c': '',
+                                                                     'Preconditions__c': '',
+                                                                     'User_Story__c': ''}"/>
+    <aura:attribute name="comboOptions" type="List" />
+    <aura:attribute name="projects" type="Project__c[]" />
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:registerEvent name="newTC" type="c:newTestCaseEvent" />
+
+	<div aria-labelledby="newtestcaseform">
+    	<fieldset class="slds-box slds-theme--default slds-container--small">
+
+        <legend id="newtestcaseform" class="slds-text-heading--small
+          slds-p-vertical--medium">
+          Add Test Case
+        </legend>
+
+        <!-- CREATE NEW TEST CASE FORM -->
+        <form class="slds-form--stacked">
+            <lightning:input aura:id="testcaseform" label="Title"
+                             name="testcaseTitle"
+                             value="{!v.newTestCase.Title__c}"
+                             required="true"/>
+            <lightning:input aura:id="testcaseform" label="Description"
+                             name="testcaseDescription"
+                             value="{!v.newTestCase.Description__c}" />
+            <lightning:input aura:id="testcaseform" label="Preconditions"
+                             name="testcasePreconditions"
+                             value="{!v.newTestCase.Preconditions__c}" />
+            <lightning:input type="url" aura:id="testcaseform" label="User Story"
+                             name="testcaseUserStory"
+                             value="{!v.newTestCase.User_Story__c}"
+                             required="true" />
+            <lightning:combobox aura:id="testcaseform" name="testcaseProject" label="Project"
+                      			placeholder="Choose Project"
+                                required="true"
+                                value="{!v.newTestCase.Project__c}"
+                      			options="{!v.comboOptions}"/>
+            <lightning:button label="Create Test Case"
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.handleNewTestCaseClick}"/>
+        </form>
+        <!-- / CREATE NEW TEST CASE FORM -->
+      </fieldset>
+      <!-- / BOXED AREA -->
+    </div>
+<!-- / CREATE NEW TEST CASE -->
+</aura:component>
