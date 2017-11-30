@@ -1,0 +1,53 @@
+<aura:component controller="TabsController">
+  <aura:attribute name="projects" type="Project__c[]" />
+  <aura:attribute name="tests" type="Test_Case__c[]" />
+  <aura:attribute name="selectedProjectTC" type="Test_Case__c[]" />
+  <aura:attribute name="selectedProject" type="Project__c" />
+  <aura:attribute name="showForm" type="Boolean" default="false" />
+  <aura:attribute name="showDetails" type="Boolean" default="false" />
+
+  <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+  <aura:handler name="showDetails" event="c:projectDetailsEvent" action="{!c.showDetails}" />
+  <aura:handler name="newTC" event="c:newTestCaseEvent" action="{!c.addTest}" />
+
+  <lightning:layout >
+  <lightning:flexipageRegionInfo width="{!v.width}"/>
+    <lightning:layoutItem padding="around-small" size="6" flexibility="auto">
+      <lightning:tabset class="slds-box slds-theme_default">
+            <lightning:tab label="Projects" onactive="{!c.refresh}">
+                <aura:iteration items="{!v.projects}" var="project">
+                	<c:pListEntry project="{!project}"/>
+                </aura:iteration>
+            </lightning:tab>
+            <lightning:tab label="Test Cases" onactive="{!c.displayForm}">
+            	<aura:iteration items="{!v.tests}" var="test_case">
+                	<c:tListEntry test_case="{!test_case}"/>
+                </aura:iteration>
+            </lightning:tab>
+        </lightning:tabset>
+      </lightning:layoutItem>
+    <lightning:layoutItem padding="around-small" size="6" flexibility="auto">
+        <aura:if isTrue="{!v.showForm}">
+            <c:fTestCase />
+        </aura:if>
+        <aura:if isTrue="{!v.showDetails}">
+            <lightning:card >
+                <aura:set attribute="title">
+                    "{!v.selectedProject.Name}"
+        		</aura:set>
+        		<aura:set attribute="actions">
+                    "{!v.selectedProject.Status__c}"
+        		</aura:set>
+        		<p class="slds-p-horizontal--small">
+            		"{!v.selectedProject.OwnerId}"
+        		</p>
+                <ul class="slds-p-horizontal--small">
+                	<aura:iteration items="{!v.selectedProjectTC}" var="test_case">
+                        <li>"{!test_case.Title__c}"</li>
+                    </aura:iteration>
+                </ul>
+    		</lightning:card>
+        </aura:if>
+    </lightning:layoutItem>
+  </lightning:layout>
+</aura:component>
