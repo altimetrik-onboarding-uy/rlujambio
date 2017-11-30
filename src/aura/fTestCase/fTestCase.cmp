@@ -10,17 +10,16 @@
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:registerEvent name="newTC" type="c:newTestCaseEvent" />
 
-	<div aria-labelledby="newtestcaseform">
-    	<fieldset class="slds-box slds-theme--default slds-container--small">
+	<div aria-labelledby="newtestcaseform" >       
+        
+    	<fieldset class="slds-box slds-theme--default slds-container--small">        
 
         <!-- CREATE NEW TEST CASE FORM -->
         <form class="slds-form--stacked">
-
-          <legend id="newtestcaseform" class="slds-text-heading--medium
-            slds-p-vertical--medium">
-            Add Test Case
-          </legend>
-
+            	<legend id="newtestcaseform" class="slds-text-heading--medium
+          			slds-p-vertical--medium">
+          			Add Test Case
+        		</legend>
             <lightning:input aura:id="testcaseform" label="Title"
                              name="testcaseTitle"
                              value="{!v.newTestCase.Title__c}"

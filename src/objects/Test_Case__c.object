@@ -84,7 +84,7 @@
         <relationshipLabel>Test Cases</relationshipLabel>
         <relationshipName>Test_Cases</relationshipName>
         <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -119,4 +119,11 @@
     <pluralLabel>Test Cases</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Insert_on_Ongoing_or_Proposed_Projects</fullName>
+        <active>true</active>
+        <description>This rule prevents creating a new Test Case if the related project status is not &quot;Ongoing&quot; or &quot;Proposed&quot;.</description>
+        <errorConditionFormula>AND(NOT(ISPICKVAL(Project__r.Status__c, &apos;Ongoing&apos;)) ,NOT(ISPICKVAL(Project__r.Status__c, &apos;Proposed&apos;)))</errorConditionFormula>
+        <errorMessage>Test Cases can only be related with Ongoing or Proposed Projects</errorMessage>
+    </validationRules>
 </CustomObject>

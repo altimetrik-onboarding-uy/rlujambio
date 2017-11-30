@@ -1,7 +1,7 @@
 ({
 	loadProjects: function(component) {
 
-      var action = component.get("c.getProjects");
+      var action = component.get("c.getOPProjects");
 
       action.setCallback(this, function(response){
         var state = response.getState();
@@ -9,9 +9,7 @@
             var projects = response.getReturnValue();
             var options = [];
             for(var i = 0; i < projects.length; i++){
-                if((projects[i].Status__c == 'Ongoing') || (projects[i].Status__c == 'Proposed')){
-                    options.push({ value: projects[i].Id, label: projects[i].Name});
-                }
+                    options.push({ value: projects[i].Id, label: projects[i].Name});                
             }
             component.set("v.comboOptions", options);
         }
