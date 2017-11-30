@@ -3,16 +3,21 @@
   <aura:attribute name="tests" type="Test_Case__c[]" />
   <aura:attribute name="selectedProjectTC" type="Test_Case__c[]" />
   <aura:attribute name="selectedProject" type="Project__c" />
+  <aura:attribute name="selectedTC" type="Test_Case__c" />
   <aura:attribute name="showForm" type="Boolean" default="false" />
+  <aura:attribute name="showCForm" type="Boolean" default="false" />
+  <aura:attribute name="showUForm" type="Boolean" default="false" />
   <aura:attribute name="showDetails" type="Boolean" default="false" />
+  <aura:attribute name="width" type="String"/>
+  <aura:attribute name="comboOptions" type="List" />
 
   <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
   <aura:handler name="showDetails" event="c:projectDetailsEvent" action="{!c.showDetails}" />
   <aura:handler name="newTC" event="c:newTestCaseEvent" action="{!c.addTest}" />
 
   <lightning:layout >
-  <lightning:flexipageRegionInfo width="{!v.width}"/>
-    <lightning:layoutItem padding="around-small" size="6" flexibility="auto">
+   <lightning:flexipageRegionInfo width="{!v.width}"/>
+    <lightning:layoutItem padding="around-small" size="4" flexibility="auto">
       <lightning:tabset class="slds-box slds-theme_default">
             <lightning:tab label="Projects" onactive="{!c.refresh}">
                 <aura:iteration items="{!v.projects}" var="project">
@@ -21,33 +26,103 @@
             </lightning:tab>
             <lightning:tab label="Test Cases" onactive="{!c.displayForm}">
             	<aura:iteration items="{!v.tests}" var="test_case">
+                <div class="slds-box slds-theme_default">
                 	<c:tListEntry test_case="{!test_case}"/>
+                </div>
+                <br />
                 </aura:iteration>
             </lightning:tab>
         </lightning:tabset>
       </lightning:layoutItem>
-    <lightning:layoutItem padding="around-small" size="6" flexibility="auto">
+
+    <lightning:layoutItem padding="around-small" size="4" flexibility="auto">
+
         <aura:if isTrue="{!v.showForm}">
             <c:fTestCase />
         </aura:if>
+
         <aura:if isTrue="{!v.showDetails}">
+            <!--AURA IF AND THEN RENDERING A COMPONENT WITH A PARAMETER MAKES PARAMETER NULL AND I DON'T KNOW WHY!!! -->
             <lightning:card >
                 <aura:set attribute="title">
                     "{!v.selectedProject.Name}"
         		</aura:set>
         		<aura:set attribute="actions">
-                    "{!v.selectedProject.Status__c}"
+                    <lightning:button variant="brand" label="New Test Case" onclick="{!c.cuForm}"/>
         		</aura:set>
         		<p class="slds-p-horizontal--small">
             		"{!v.selectedProject.OwnerId}"
         		</p>
                 <ul class="slds-p-horizontal--small">
                 	<aura:iteration items="{!v.selectedProjectTC}" var="test_case">
-                        <li>"{!test_case.Title__c}"</li>
+                  <div class="slds-box slds-theme_default">
+                    <lightning:card >
+                          <aura:set attribute="title" value="{!test_case.Title__c}">
+                          </aura:set>
+                          <aura:set attribute="actions">
+                            <lightning:buttonIcon iconName="utility:edit" size="small" alternativeText="Edit Test Case"  onclick="{!c.editTestCase}" value="{!test_case}"/>
+                            <lightning:buttonIcon iconName="utility:close" size="small" alternativeText="Delete Test Case" onclick="{!c.deleteTestCase}" value="{!test_case}"/>
+                      		</aura:set>
+                          <p class="slds-p-horizontal--small">
+                              "{!test_case.Name}"
+                          </p>
+                      </lightning:card>
+                    </div>
+                    <br />
                     </aura:iteration>
                 </ul>
     		</lightning:card>
         </aura:if>
+
     </lightning:layoutItem>
+
+    <lightning:layoutItem padding="around-small" size="4" flexibility="auto">
+      <aura:if isTrue="{!v.showCForm}">
+        <c:fTestCase />
+      </aura:if>
+      <aura:if isTrue="{!v.showUForm}">
+        <!--AURA IF AND THEN RENDERING A COMPONENT WITH A PARAMETER MAKES PARAMETER NULL AND I DON'T KNOW WHY!!! -->
+        <div aria-labelledby="newtestcaseform">
+          	<fieldset class="slds-box slds-theme--default slds-container--small">
+
+              <!-- CREATE NEW TEST CASE FORM -->
+              <form class="slds-form--stacked">
+
+                <legend id="newtestcaseform" class="slds-text-heading--medium
+                  slds-p-vertical--medium">
+                  Edit Test Case
+                </legend>
+
+                  <lightning:input aura:id="testcaseform" label="Title"
+                                   name="testcaseTitle"
+                                   value="{!v.selectedTC.Title__c}"
+                                   required="true"/>
+                  <lightning:input aura:id="testcaseform" label="Description"
+                                   name="testcaseDescription"
+                                   value="{!v.selectedTC.Description__c}" />
+                  <lightning:input aura:id="testcaseform" label="Preconditions"
+                                   name="testcasePreconditions"
+                                   value="{!v.selectedTC.Preconditions__c}" />
+                  <lightning:input type="url" aura:id="testcaseform" label="User Story"
+                                   name="testcaseUserStory"
+                                   value="{!v.selectedTC.User_Story__c}"
+                                   required="true" />
+                  <lightning:combobox aura:id="testcaseform" name="testcaseProject" label="Project"
+                            			placeholder="Choose Project"
+                                  required="true"
+                                  value="{!v.selectedTC.Project__c}"
+                            			options="{!v.comboOptions}"/>
+                  <lightning:button label="Edit Test Case"
+                                    class="slds-m-top--medium"
+                                    variant="brand"
+                                    onclick="{!c.handleEditTestCaseClick}"/>
+              </form>
+              <!-- / CREATE NEW TEST CASE FORM -->
+            </fieldset>
+            <!-- / BOXED AREA -->
+          </div>
+      </aura:if>
+    </lightning:layoutItem>
+
   </lightning:layout>
 </aura:component>
