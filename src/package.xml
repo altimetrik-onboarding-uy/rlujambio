@@ -17,17 +17,16 @@
 		<name>ApexTrigger</name>
 	</types>
 	<types>
+		<members>Project__c</members>
+		<members>Test_Case__c</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
 		<members>*</members>
 		<name>StaticResource</name>
 	</types>
 	<types>
-		<members>Testacular</members>
-		<members>tabPane</members>
-		<members>projectDetailsEvent</members>
-		<members>newTestCaseEvent</members>
-		<members>pListEntry</members>
-		<members>tListEntry</members>
-		<members>fTestCase</members>
+		<members>fUTestCase</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<version>36.0</version>

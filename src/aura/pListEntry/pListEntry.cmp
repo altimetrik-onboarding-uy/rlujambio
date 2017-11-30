@@ -1,18 +1,32 @@
 <aura:component >
   <aura:attribute name="project" type="Project__c" />
+  <aura:attribute name="width" type="String"/>
 
   <aura:registerEvent name="showDetails" type="c:projectDetailsEvent" />
 
-  <lightning:card >
-        <aura:set attribute="title" value="{!v.project.Name}">
-        </aura:set>
-        <aura:set attribute="footer">
-            <lightning:button label="Details" onclick="{!c.handleDetailsClick}"/>
-        </aura:set>
-        <aura:set attribute="actions" value="{!v.project.Status__c}">
-        </aura:set>
-        <p class="slds-p-horizontal--small">
-            "{!v.project.OwnerId}"
-        </p>
-    </lightning:card>
+<lightning:flexipageRegionInfo width="{!v.width}"/>
+  <lightning:tile label="Project Entry" class="slds-box slds-theme_shade">
+         <aura:set attribute="media">
+             <lightning:icon iconName="standard:groups"/>
+         </aura:set>
+         <dl class="slds-dl_horizontal">
+             <dt class="slds-dl_horizontal__label">
+                 <p class="slds-truncate">Project Name:</p>
+             </dt>
+             <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                 <p class="slds-truncate">"{!v.project.Name}"</p>
+             </dd>
+             <dt class="slds-dl_horizontal__label">
+                 <p class="slds-truncate">Project Status:</p>
+             </dt>
+             <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                 <p class="slds-truncate">"{!v.project.Status__c}"</p>
+             </dd>
+             <dd class="slds-dl_horizontal__detail slds-tile__meta">
+               <br/>
+               <lightning:button label="Details" onclick="{!c.handleDetailsClick}"/>
+             </dd>
+         </dl>
+  </lightning:tile>
+
 </aura:component>
