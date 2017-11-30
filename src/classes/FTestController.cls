@@ -1,5 +1,6 @@
 public with sharing class FTestController {
 
+//IN ORDER TO COMMIT...
 		@AuraEnabled
     public static List<Project__c> getProjects(){
         return [SELECT Id, Name, Status__c, OwnerId FROM Project__c ORDER BY Name LIMIT 10000];
