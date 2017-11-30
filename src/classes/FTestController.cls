@@ -7,7 +7,7 @@ public with sharing class FTestController {
 
 		@AuraEnabled
 		public static List<Project__c> getOPProjects(){
-			return [SELECT Id, Name, Status__c, OwnerId FROM Project__c WHERE ((Status__c = 'Ongoing') OR (Status__c = 'Proposed')) ORDER BY Name];
+			return [SELECT Id, Name, Status__c, OwnerId FROM Project__c WHERE ((Status__c = 'Ongoing') OR (Status__c = 'Proposed')) ORDER BY Name LIMIT 10000];
 		}
 
     @AuraEnabled
@@ -25,7 +25,7 @@ public with sharing class FTestController {
             System.debug(err.getStatusCode() + err.getMessage());
             System.debug('Affected fields: ' + err.getFields());
           }
-        }				
+        }
         return newTestCase;
   }
 }

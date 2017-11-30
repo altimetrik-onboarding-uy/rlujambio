@@ -417,7 +417,30 @@
         "cls": "folder",
         "select": false,
         "expanded": false,
-        "children": []
+        "children": [
+            {
+                "createdById": "0051I000000PAs7QAG",
+                "createdByName": "Rodrigo Lujambio",
+                "createdDate": "2017-11-30T13:50:36.000Z",
+                "fileName": "triggers/newTC.trigger",
+                "fullName": "newTC",
+                "id": "ApexTrigger.newTC",
+                "lastModifiedById": "0051I000000PAs7QAG",
+                "lastModifiedByName": "Rodrigo Lujambio",
+                "lastModifiedDate": "2017-11-30T13:50:36.000Z",
+                "manageableState": "unmanaged",
+                "type": "ApexTrigger",
+                "leaf": true,
+                "title": "newTC",
+                "checked": false,
+                "text": "newTC",
+                "cls": "",
+                "level": 2,
+                "isFolder": false,
+                "children": [],
+                "select": false
+            }
+        ]
     },
     {
         "id": "AuraDefinitionBundle",
@@ -13044,6 +13067,193 @@
             {
                 "createdById": "0051I000000PAs7QAG",
                 "createdByName": "Rodrigo Lujambio",
+                "createdDate": "2017-11-30T14:32:22.000Z",
+                "fileName": "objects/Step__c.object",
+                "fullName": "Step__c",
+                "id": "CustomObject.Step__c",
+                "lastModifiedById": "0051I000000PAs7QAG",
+                "lastModifiedByName": "Rodrigo Lujambio",
+                "lastModifiedDate": "2017-11-30T14:32:22.000Z",
+                "manageableState": "unmanaged",
+                "type": "CustomObject",
+                "leaf": false,
+                "title": "Step__c",
+                "checked": false,
+                "text": "Step__c",
+                "cls": "folder",
+                "level": 2,
+                "isFolder": true,
+                "children": [
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Step__c.actionOverrides",
+                        "text": "actionOverrides",
+                        "title": "actionOverrides",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Accept",
+                                "title": "Accept",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.Accept",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "CancelEdit",
+                                "title": "CancelEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.CancelEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Clone",
+                                "title": "Clone",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.Clone",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Delete",
+                                "title": "Delete",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.Delete",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Edit",
+                                "title": "Edit",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.Edit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Follow",
+                                "title": "Follow",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.Follow",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "List",
+                                "title": "List",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.List",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "New",
+                                "title": "New",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.New",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "SaveEdit",
+                                "title": "SaveEdit",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.SaveEdit",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Tab",
+                                "title": "Tab",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.Tab",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "View",
+                                "title": "View",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.actionOverrides.View",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Step__c.fields",
+                        "text": "fields",
+                        "title": "fields",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Description__c",
+                                "title": "Description__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.fields.Description__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Expected_Result__c",
+                                "title": "Expected_Result__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.fields.Expected_Result__c",
+                                "select": false
+                            },
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Test_Case__c",
+                                "title": "Test_Case__c",
+                                "isFolder": false,
+                                "id": "CustomObject.Step__c.fields.Test_Case__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    }
+                ],
+                "select": false
+            },
+            {
+                "createdById": "0051I000000PAs7QAG",
+                "createdByName": "Rodrigo Lujambio",
                 "createdDate": "1970-01-01T00:00:00.000Z",
                 "fileName": "objects/StreamingChannel.object",
                 "fullName": "StreamingChannel",
@@ -13711,6 +13921,28 @@
                                 "title": "User_Story__c",
                                 "isFolder": false,
                                 "id": "CustomObject.Test_Case__c.fields.User_Story__c",
+                                "select": false
+                            }
+                        ],
+                        "select": false,
+                        "cls": "folder"
+                    },
+                    {
+                        "checked": false,
+                        "level": 3,
+                        "id": "CustomObject.Test_Case__c.validationRules",
+                        "text": "validationRules",
+                        "title": "validationRules",
+                        "isFolder": true,
+                        "children": [
+                            {
+                                "leaf": true,
+                                "checked": false,
+                                "level": 4,
+                                "text": "Insert_on_Ongoing_or_Proposed_Projects",
+                                "title": "Insert_on_Ongoing_or_Proposed_Projects",
+                                "isFolder": false,
+                                "id": "CustomObject.Test_Case__c.validationRules.Insert_on_Ongoing_or_Proposed_Projects",
                                 "select": false
                             }
                         ],
