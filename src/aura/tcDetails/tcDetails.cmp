@@ -1,0 +1,29 @@
+<aura:component controller="TestDetailsController">
+  <aura:attribute name="selectedTC" type="Test_Case__c" default="{'sobjectType': 'Test_Case__c',
+                                                                  'Title__c' : 'No Test Case Selected',
+                                                                  'Project__c' : '',
+                                                                  'Name': ''}"/>
+
+  <aura:attribute name="steps" type="Step__c[]" />
+  <aura:attribute name="oldIndex" type="Integer" />
+  <aura:attribute name="newIndex" type="Integer" />
+
+  <aura:handler event="c:seeTCDetails" action="{!c.handleDetailsTC}" />
+  <aura:handler event="c:refreshSteps" action="{!c.refresh}" />
+  <aura:handler name="stepChange" event="c:stepChange" action="{!c.onStepChanged}" />
+
+  <aura:registerEvent name="sendTC" type="c:sendFormTCEvent" />
+  <aura:registerEvent name="showStepForm" type="c:showStepForm" />
+
+    <lightning:card >
+        <aura:set attribute="title">
+            <div class="slds-text-heading_small">"{!v.selectedTC.Title__c}"</div>
+        </aura:set>
+        <aura:set attribute="actions">
+          <lightning:button variant="brand" label="New Step" onclick="{!c.newStep}" disabled="true" aura:id="newStepButton"/>
+        </aura:set>
+        <aura:iteration items="{!v.steps}" var="step" indexVar="i">
+          <c:pipelineHelper step="{!step}" index="{!i}" steps="{!v.steps}"/>
+        </aura:iteration>
+    </lightning:card>
+</aura:component>

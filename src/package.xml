@@ -2,8 +2,14 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
 		<members>FTestController</members>
-		<members>TabsController</members>
 		<members>OwnerOngoingProjectsController</members>
+		<members>TabsController</members>
+		<members>TestDetailsController</members>
+		<members>FStepController</members>
+		<members>TestDetailsControllerTest</members>
+		<members>ControllersTest</members>
+		<members>scheduledEmail </members>
+		<members>scheduledEmail</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -17,6 +23,16 @@
 		<members>projectDetailsEvent</members>
 		<members>tListEntry</members>
 		<members>tabPane</members>
+		<members>testDetails</members>
+		<members>seeTCDetails</members>
+		<members>testDetailsEntry</members>
+		<members>tcDetails</members>
+		<members>fTestStep</members>
+		<members>sendFormTCEvent</members>
+		<members>showStepForm</members>
+		<members>refreshSteps</members>
+		<members>stepChange</members>
+		<members>pipelineHelper</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
@@ -36,6 +52,10 @@
 	<types>
 		<members>*</members>
 		<name>StaticResource</name>
+	</types>
+	<types>
+		<members>notificateOwner</members>
+		<name>ApexTrigger</name>
 	</types>
 	<version>36.0</version>
 </Package>

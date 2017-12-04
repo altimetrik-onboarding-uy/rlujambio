@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="tc" type="Test_Case__c"/>
+    <aura:attribute name="status" type="Boolean" />
+    <aura:attribute name="steps" type="Step__c[]" />
+</aura:event>

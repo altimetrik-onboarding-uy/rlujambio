@@ -24,36 +24,12 @@ public with sharing class TabsController {
     public static void removeTC(Test_Case__c tc) {
 
       Database.DeleteResult dr = Database.delete(tc);
-
-      if(dr.isSuccess()){
-        System.debug('Delete was successful');
-      }
-      else{
-        for(Database.Error err : dr.getErrors()){
-          System.debug('The following error occurred:');
-          System.debug(err.getStatusCode() + err.getMessage());
-          System.debug('Affected fields: ' + err.getFields());
-        }
-      }
     }
 
     @AuraEnabled
     public static Test_Case__c updateTestCase(Test_Case__c selectedTC){
 
         Database.SaveResult sr = Database.update(selectedTC);
-
-        if(sr.isSuccess()){
-          System.debug('Update was successful');
-          System.debug(selectedTC);
-        }
-        else{
-          for(Database.Error err : sr.getErrors()){
-            System.debug('The following error occurred:');
-            System.debug(err.getStatusCode() + err.getMessage());
-            System.debug('Affected fields: ' + err.getFields());
-          }
-        }
-
         return selectedTC;
   }
 }

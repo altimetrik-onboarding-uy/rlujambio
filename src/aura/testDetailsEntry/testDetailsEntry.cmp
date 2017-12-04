@@ -1,0 +1,29 @@
+<aura:component >
+  <aura:attribute name="step" type="Step__c"/>
+  <aura:attribute name="steps" type="Step__c[]" />
+
+  <aura:registerEvent name="stepChange" type="c:stepChange"/>
+
+ <div draggable="true" ondragstart="{!c.onDragStart}">
+  <lightning:tile class="slds-box slds-theme_shade" label="{!v.step.Name}">
+         <dl class="slds-dl_horizontal">
+             <dt class="slds-dl_horizontal__label">
+                 <p class="slds-truncate">Description:</p>
+             </dt>
+             <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                 <p class="slds-truncate">"{!v.step.Description__c}"</p>
+             </dd>
+             <dt class="slds-dl_horizontal__label">
+                 <p class="slds-truncate">Expected Result:</p>
+             </dt>
+             <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                 <p class="slds-truncate">"{!v.step.Expected_Result__c}"</p>
+             </dd>
+             <dd class="slds-dl_horizontal__detail slds-tile__meta">
+               <br />
+               <lightning:button label="Edit" onclick="{!c.editRecord}"/>
+             </dd>
+         </dl>
+  </lightning:tile>
+</div>
+</aura:component>
