@@ -117,7 +117,7 @@
 								var tc = response.getReturnValue();
 								var project = component.get("v.selectedProject");
 								this.getRelatedTC(component, project);
-								
+
             }
             else{
                 console.log(response);
@@ -125,6 +125,25 @@
         });
 
         $A.enqueueAction(action);
-    }
+    },
 
+		getAllRelatedTC : function(component, projects){
+			var relatedTCs = [];
+			for(var i = 0; i < projects.length; i++){
+				var project = projects[i];
+				var action = component.get("c.getRelatedTC");
+				action.setParams({"project": project});
+
+				action.setCallback(this, function(response){
+						var state = response.getState();
+						if (state == "SUCCESS"){
+
+								relatedTCs = relatedTCs.concat(response.getReturnValue());
+								component.set("v.tests", relatedTCs);
+						}
+				});
+
+				$A.enqueueAction(action);
+			}
+		}
 })

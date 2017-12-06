@@ -21,9 +21,11 @@
 
             <lightning:input aura:id="testcasestepform" label="Description"
                              name="teststepDescription"
+                             required="true"
                              value="{!v.newTestStep.Description__c}" />
             <lightning:input aura:id="testcasestepform" label="Expected Result"
                              name="teststepExpectedResult"
+                             required="true"
                              value="{!v.newTestStep.Expected_Result__c}" />
             <lightning:button label="Create Test Case Step"
                               class="slds-m-top--medium"

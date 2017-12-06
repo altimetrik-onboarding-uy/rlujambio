@@ -9,6 +9,7 @@ trigger notificateOwner on Project__c (after update) {
   }
 
   if(applies){
+
     Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
     List<Project__c> projects = TabsController.getOngoingProjects();
     List<String> owners = new List<String>();
@@ -25,19 +26,27 @@ trigger notificateOwner on Project__c (after update) {
 
     Integer index = 0;
     String message = '';
+    List<String> projectIds = new List<String>();
+    for(Project__c p : projects){
+      projectIds.add(p.Id);
+    }
+    List<AggregateResult> queryResult = [SELECT COUNT_DISTINCT(Id) total FROM Test_Case__c WHERE Project__c IN : projectIds GROUP BY Project__c];
+    Map<String, Integer> mapResult = new Map<String, Integer>();
 
+    for(Integer i = 0; i < queryResult.size(); i++){
+      mapResult.put(projectIds.get(i), (Integer) queryResult[i].get('total'));
+    }
     for(String a : addresses){
       String name = users[index].Name;
       String id = users[index].Id;
       List<String> sendTo = new List<String>();
       sendTo.add(a);
-
       message = 'Hi, ' + name + '\n' + 'This is a list of your ongoing projects' + '\n';
+
       for(Project__c p : projects){
         if(p.OwnerId == id){
           message = message + 'Name: ' + p.Name + '- Status: ' + p.Status__c + ' ';
-          List<AggregateResult> queryResult = [SELECT COUNT_DISTINCT(Id) total FROM Test_Case__c WHERE Project__c = : p.Id];
-          Integer countOfTC = (Integer) queryResult[0].get('total');
+          Integer countOfTC = mapResult.get(p.Id);
           message = message + '- Number of associated Test Cases: ' + countOfTC + '\n';
         }
       }
@@ -47,7 +56,7 @@ trigger notificateOwner on Project__c (after update) {
       Messaging.sendEmail(New Messaging.SingleEmailMessage[]{email});
       index++;
 
+      }
+
     }
   }
-
-}

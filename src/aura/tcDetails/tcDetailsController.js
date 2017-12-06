@@ -10,16 +10,19 @@
 		}
 		else{
 
-			component.set("v.selectedTC", tc);
-			if(status){
-				component.set("v.steps", event.getParam("steps"));
-			}
-			else{
-				helper.getStepsTC(component, tc);
-			}
+			if(!((tc.Title__c == 'No Test Case Selected') && (tc.Id != selectedTC.Id))){
+				component.set("v.selectedTC", tc);
+				if(status){
+					var steps = event.getParam("steps");
+					component.set("v.steps", steps);
+				}
+				else{
+					helper.getStepsTC(component, tc);
+				}
 
-			var button = component.find("newStepButton");
-			button.set("v.disabled", status);
+				var button = component.find("newStepButton");
+				button.set("v.disabled", status);
+			}
 		}
 	},
 
@@ -47,17 +50,17 @@
 		var index = event.getParam("index");
 		var steps = component.get("v.steps");
 
-
 		if(isDrag){
 			component.set("v.oldIndex", index);
 		}
 		else{
 		var oldIndex = component.get("v.oldIndex");
 			if(oldIndex > -1){
-				steps.splice(oldIndex, 1);
+				//steps.splice(oldIndex, 1);
 				if(index > -1){
-					steps.splice(index,0,step);
-					component.set("v.steps", steps);
+					//steps.splice(index,0,step);
+					//component.set("v.steps", steps);
+					helper.reOrder(component,steps,step,oldIndex,index);
 				}
 			}
 		}

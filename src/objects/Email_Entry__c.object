@@ -56,54 +56,45 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>Description__c</fullName>
+        <fullName>Message__c</fullName>
         <externalId>false</externalId>
-        <label>Description</label>
+        <label>Message</label>
         <length>131072</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
-        <fullName>Expected_Result__c</fullName>
+        <fullName>Recipient_Id__c</fullName>
         <externalId>false</externalId>
-        <label>Expected Result</label>
+        <label>Recipient Id</label>
         <required>true</required>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
     <fields>
-        <fullName>Order__c</fullName>
+        <fullName>Recipient_Mail__c</fullName>
         <externalId>false</externalId>
-        <label>Order</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
+        <label>Recipient Mail</label>
+        <required>true</required>
         <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
+        <type>TextArea</type>
     </fields>
     <fields>
-        <fullName>Test_Case__c</fullName>
+        <fullName>Recipient_Name__c</fullName>
         <externalId>false</externalId>
-        <label>Test Case</label>
-        <referenceTo>Test_Case__c</referenceTo>
-        <relationshipLabel>Steps</relationshipLabel>
-        <relationshipName>Steps</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <label>Recipient Name</label>
+        <required>true</required>
         <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <type>TextArea</type>
     </fields>
     <gender>Feminine</gender>
-    <label>Step</label>
+    <label>Email Entry</label>
     <nameField>
-        <displayFormat>TS-{000000000}</displayFormat>
-        <label>Step Name</label>
-        <type>AutoNumber</type>
+        <label>Email Entry Name</label>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Steps</pluralLabel>
+    <pluralLabel>Email Entries</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

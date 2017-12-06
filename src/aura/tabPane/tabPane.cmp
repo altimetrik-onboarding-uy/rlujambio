@@ -9,6 +9,7 @@
   <aura:attribute name="showUForm" type="Boolean" default="false" />
   <aura:attribute name="showStepForm" type="Boolean" default="false"/>
   <aura:attribute name="showDetails" type="Boolean" default="false" />
+  <aura:attribute name="showTCDetails" type="Boolean" default="true" />
   <aura:attribute name="width" type="String"/>
   <aura:attribute name="comboOptions" type="List" />
 
@@ -132,7 +133,9 @@
 
   <lightning:layout >
     <lightning:layoutItem padding="around-small" size="9" flexibility="auto">
-      <c:tcDetails/>
+       <aura:if isTrue="{!v.showTCDetails}">
+        <c:tcDetails />
+       </aura:if>
     </lightning:layoutItem>
     <lightning:layoutItem padding="around-small" size="3" flexibility="auto">
       <aura:if isTrue="{!v.showStepForm}">

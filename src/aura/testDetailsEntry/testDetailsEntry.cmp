@@ -19,6 +19,12 @@
              <dd class="slds-dl_horizontal__detail slds-tile__meta">
                  <p class="slds-truncate">"{!v.step.Expected_Result__c}"</p>
              </dd>
+             <dt class="slds-dl_horizontal__label">
+                 <p class="slds-truncate">Order:</p>
+             </dt>
+             <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                 <p class="slds-truncate">"{!v.step.Order__c}"</p>
+             </dd>
              <dd class="slds-dl_horizontal__detail slds-tile__meta">
                <br />
                <lightning:button label="Edit" onclick="{!c.editRecord}"/>

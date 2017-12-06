@@ -7,7 +7,7 @@
 		action.setCallback(this, function(response){
 			var state = response.getState();
 			if (state == "SUCCESS"){
-				component.set("v.newTestStep", {'sobjectType': 'Step__c', 'Description__c': '', 'Expected_Result__c': ''});
+				component.set("v.newTestStep", {'sobjectType': 'Step__c', 'Description__c': '', 'Expected_Result__c': '', 'Order__c': ''});
 			}
 		});
 

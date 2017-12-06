@@ -12,7 +12,10 @@
 				component.set("v.showCForm", false);
 				component.set("v.showUForm", false);
 				component.set("v.showStepForm", false);
-				component.set("v.tests", component.get("v.tests"));
+				component.set("v.showTCDetails", false);
+				var projects = component.get("v.projects");
+				helper.getAllRelatedTC(component, projects);
+				//component.set("v.tests", component.get("v.tests"));
 
 				var evt = $A.get("e.c:seeTCDetails");
 				var tc = {'sobjectType': 'Test_Case__c','Title__c' : 'No Test Case selected', 'Project__c' : '','Name': ''};
@@ -25,6 +28,7 @@
         component.set("v.showForm", false);
 				component.set("v.showCForm", false);
 				component.set("v.showUForm", false);
+				component.set("v.showTCDetails", true);
 	},
 
     showDetails: function(component, event, helper){
@@ -80,7 +84,7 @@
 						helper.loadTestCases(component);
 
 						var evt = $A.get("e.c:seeTCDetails");
-						evt.setParams({"tc": selectedTC, "status": true});
+						evt.setParams({"tc": selectedTC, "status": false});
 						evt.fire();
     },
 
