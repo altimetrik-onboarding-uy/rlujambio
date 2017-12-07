@@ -17,7 +17,7 @@
 
     <lightning:card >
         <aura:set attribute="title">
-            <div class="slds-text-heading_small">"{!v.selectedTC.Title__c}"</div>
+            <div class="slds-text-heading_small">{!v.selectedTC.Title__c}</div>
         </aura:set>
         <aura:set attribute="actions">
           <lightning:button variant="brand" label="New Step" onclick="{!c.newStep}" disabled="true" aura:id="newStepButton"/>

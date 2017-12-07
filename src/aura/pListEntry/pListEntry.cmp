@@ -14,13 +14,13 @@
                  <p class="slds-truncate">Project Name:</p>
              </dt>
              <dd class="slds-dl_horizontal__detail slds-tile__meta">
-                 <p class="slds-truncate">"{!v.project.Name}"</p>
+                 <p class="slds-truncate">{!v.project.Name}</p>
              </dd>
              <dt class="slds-dl_horizontal__label">
                  <p class="slds-truncate">Project Status:</p>
              </dt>
              <dd class="slds-dl_horizontal__detail slds-tile__meta">
-                 <p class="slds-truncate">"{!v.project.Status__c}"</p>
+                 <p class="slds-truncate">{!v.project.Status__c}</p>
              </dd>
              <dd class="slds-dl_horizontal__detail slds-tile__meta">
                <br/>

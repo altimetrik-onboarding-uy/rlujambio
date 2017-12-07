@@ -50,13 +50,13 @@
             <!--AURA IF AND THEN RENDERING A COMPONENT WITH A PARAMETER MAKES PARAMETER NULL AND I DON'T KNOW WHY!!! -->
             <lightning:card >
                 <aura:set attribute="title">
-                    "{!v.selectedProject.Name}"
+                    {!v.selectedProject.Name}
         		</aura:set>
         		<aura:set attribute="actions">
                     <lightning:button variant="brand" label="New Test Case" onclick="{!c.cuForm}"/>
         		</aura:set>
         		<p class="slds-p-horizontal--small">
-            		"{!v.selectedProject.OwnerId}"
+            		{!v.selectedProject.OwnerId}
         		</p>
                 <ul class="slds-p-horizontal--small">
                 	<aura:iteration items="{!v.selectedProjectTC}" var="test_case">
@@ -70,7 +70,7 @@
                             <lightning:buttonIcon iconName="utility:close" size="small" alternativeText="Delete Test Case" onclick="{!c.deleteTestCase}" value="{!test_case}"/>
                       		</aura:set>
                           <p class="slds-p-horizontal--small">
-                              "{!test_case.Name}"
+                              {!test_case.Name}
                           </p>
                       </lightning:card>
                     </div>
@@ -84,7 +84,7 @@
 
     <lightning:layoutItem padding="around-small" size="4" flexibility="auto">
       <aura:if isTrue="{!v.showCForm}">
-        <c:fTestCase />
+        <c:fTestCase pId = "{!v.selectedProject.Id}"/>
       </aura:if>
       <aura:if isTrue="{!v.showUForm}">
         <!--AURA IF AND THEN RENDERING A COMPONENT WITH A PARAMETER MAKES PARAMETER NULL AND I DON'T KNOW WHY!!! -->
