@@ -4,7 +4,7 @@
         <aura:set attribute="title" value="{!v.test_case.Title__c}">
         </aura:set>
         <p class="slds-p-horizontal--small">
-            "{!v.test_case.Name}"
+            {!v.test_case.Name}
         </p>
     </lightning:card>
 </aura:component>
