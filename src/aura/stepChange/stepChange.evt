@@ -1,0 +1,5 @@
+<aura:event type="COMPONENT">
+    <aura:attribute type="Step__c" name="step"/>
+    <aura:attribute type="Integer" name="index" />
+    <aura:attribute type="Boolean" name="isDrag" />
+  </aura:event>

@@ -14,19 +14,17 @@ public with sharing class FTestController {
     @AuraEnabled
     public static Test_Case__c addTestCase(Test_Case__c newTestCase){
 
-        Database.SaveResult sr = Database.insert(newTestCase);
-
-				if(sr.isSuccess()){
-          System.debug('Insert was successful');
-          System.debug(newTestCase);
-        }
-        else{
-          for(Database.Error err : sr.getErrors()){
-            System.debug('The following error occurred:');
-            System.debug(err.getStatusCode() + err.getMessage());
-            System.debug('Affected fields: ' + err.getFields());
-          }
-        }
+        Database.SaveResult sr = Database.insert(newTestCase);				
+					if(sr.isSuccess()){
+						System.debug('Insert was ok' + sr);
+					}
+					else{
+						for(Database.Error err : sr.getErrors()) {
+		            System.debug('The following error has occurred.');
+		            System.debug(err.getStatusCode() + ': ' + err.getMessage());
+		            System.debug('Contact fields that affected this error: ' + err.getFields());
+							 }
+					}
         return newTestCase;
   }
 }

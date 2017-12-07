@@ -7,13 +7,18 @@
   <aura:attribute name="showForm" type="Boolean" default="false" />
   <aura:attribute name="showCForm" type="Boolean" default="false" />
   <aura:attribute name="showUForm" type="Boolean" default="false" />
+  <aura:attribute name="showStepForm" type="Boolean" default="false"/>
   <aura:attribute name="showDetails" type="Boolean" default="false" />
+  <aura:attribute name="showTCDetails" type="Boolean" default="true" />
   <aura:attribute name="width" type="String"/>
   <aura:attribute name="comboOptions" type="List" />
 
   <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
   <aura:handler name="showDetails" event="c:projectDetailsEvent" action="{!c.showDetails}" />
   <aura:handler name="newTC" event="c:newTestCaseEvent" action="{!c.addTest}" />
+  <aura:handler name="showStepForm" event="c:showStepForm" action="{!c.showStepF}" />
+
+  <aura:registerEvent name="seeDetails" type="c:seeTCDetails" />
 
   <lightning:layout >
    <lightning:flexipageRegionInfo width="{!v.width}"/>
@@ -60,6 +65,7 @@
                           <aura:set attribute="title" value="{!test_case.Title__c}">
                           </aura:set>
                           <aura:set attribute="actions">
+                            <lightning:buttonIcon iconName="utility:description" size="small" alternativeText="Details"  onclick="{!c.seeDetails}" value="{!test_case}"/>
                             <lightning:buttonIcon iconName="utility:edit" size="small" alternativeText="Edit Test Case"  onclick="{!c.editTestCase}" value="{!test_case}"/>
                             <lightning:buttonIcon iconName="utility:close" size="small" alternativeText="Delete Test Case" onclick="{!c.deleteTestCase}" value="{!test_case}"/>
                       		</aura:set>
@@ -123,6 +129,19 @@
           </div>
       </aura:if>
     </lightning:layoutItem>
-
   </lightning:layout>
+
+  <lightning:layout >
+    <lightning:layoutItem padding="around-small" size="9" flexibility="auto">
+       <aura:if isTrue="{!v.showTCDetails}">
+        <c:tcDetails />
+       </aura:if>
+    </lightning:layoutItem>
+    <lightning:layoutItem padding="around-small" size="3" flexibility="auto">
+      <aura:if isTrue="{!v.showStepForm}">
+      <c:fTestStep />
+    </aura:if>
+    </lightning:layoutItem>
+  </lightning:layout>
+
 </aura:component>

@@ -25,16 +25,16 @@ public with sharing class TabsController {
 
       Database.DeleteResult dr = Database.delete(tc);
 
-      if(dr.isSuccess()){
-        System.debug('Delete was successful');
-      }
-      else{
-        for(Database.Error err : dr.getErrors()){
-          System.debug('The following error occurred:');
-          System.debug(err.getStatusCode() + err.getMessage());
-          System.debug('Affected fields: ' + err.getFields());
-        }
-      }
+				if(dr.isSuccess()){
+					System.debug('Insert was ok' + dr);
+				}
+				else{
+					for(Database.Error err : dr.getErrors()) {
+	            System.debug('The following error has occurred.');
+	            System.debug(err.getStatusCode() + ': ' + err.getMessage());
+	            System.debug('Contact fields that affected this error: ' + err.getFields());
+						 }
+				}
     }
 
     @AuraEnabled
@@ -42,18 +42,16 @@ public with sharing class TabsController {
 
         Database.SaveResult sr = Database.update(selectedTC);
 
-        if(sr.isSuccess()){
-          System.debug('Update was successful');
-          System.debug(selectedTC);
-        }
-        else{
-          for(Database.Error err : sr.getErrors()){
-            System.debug('The following error occurred:');
-            System.debug(err.getStatusCode() + err.getMessage());
-            System.debug('Affected fields: ' + err.getFields());
-          }
-        }
-
+  				if(sr.isSuccess()){
+  					System.debug('Update was ok' + sr);
+  				}
+  				else{
+  					for(Database.Error err : sr.getErrors()) {
+  	            System.debug('The following error has occurred.');
+  	            System.debug(err.getStatusCode() + ': ' + err.getMessage());
+  	            System.debug('Contact fields that affected this error: ' + err.getFields());
+  						 }
+  				}
         return selectedTC;
   }
 }

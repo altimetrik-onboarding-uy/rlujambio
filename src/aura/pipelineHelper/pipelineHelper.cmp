@@ -1,0 +1,11 @@
+<aura:component >
+  <aura:attribute name="step" type="Step__c"/>
+  <aura:attribute name="steps" type="Step__c[]" />
+  <aura:attribute name="index" type="String" />
+
+  <aura:registerEvent name="stepChange" type="c:stepChange"/>
+
+ <div ondrop="{!c.onDrop}" ondragover="{!c.allowDrop}">
+  <c:testDetailsEntry step="{!v.step}" steps="{!v.steps}" />
+</div>
+</aura:component>

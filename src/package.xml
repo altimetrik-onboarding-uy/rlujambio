@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>ControllersTest</members>
+		<members>FStepController</members>
 		<members>FTestController</members>
 		<members>TabsController</members>
-		<members>OwnerOngoingProjectsController</members>
+		<members>TestDetailsController</members>
+		<members>emaiBatch</members>
+		<members>scheduledEmail</members>
+		<members>CustomIterator</members>
+		<members>iCustomIterator</members>
 		<name>ApexClass</name>
 	</types>
 	<types>
@@ -11,12 +17,25 @@
 		<name>ApexComponent</name>
 	</types>
 	<types>
+		<members>notificateOwner</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
 		<members>fTestCase</members>
+		<members>fTestStep</members>
 		<members>newTestCaseEvent</members>
 		<members>pListEntry</members>
+		<members>pipelineHelper</members>
 		<members>projectDetailsEvent</members>
+		<members>refreshSteps</members>
+		<members>seeTCDetails</members>
+		<members>sendFormTCEvent</members>
+		<members>showStepForm</members>
+		<members>stepChange</members>
 		<members>tListEntry</members>
 		<members>tabPane</members>
+		<members>tcDetails</members>
+		<members>testDetailsEntry</members>
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
@@ -24,6 +43,7 @@
 		<name>CustomApplicationComponent</name>
 	</types>
 	<types>
+		<members>Email_Entry__c</members>
 		<members>Project__c</members>
 		<members>Step__c</members>
 		<members>Test_Case__c</members>

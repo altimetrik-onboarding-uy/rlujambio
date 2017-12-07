@@ -9,7 +9,7 @@
             var projects = response.getReturnValue();
             var options = [];
             for(var i = 0; i < projects.length; i++){
-                    options.push({ value: projects[i].Id, label: projects[i].Name});                
+                    options.push({ value: projects[i].Id, label: projects[i].Name});
             }
             component.set("v.comboOptions", options);
         }
@@ -30,6 +30,9 @@
             var state = response.getState();
             if (state == "SUCCESS") {
                 var event = component.getEvent("newTC");
+						    component.set("v.newTestCase", {'sobjectType': 'Test_Case__c', 'Title__c': '', 'Description__c': '',
+														                                                                     'Preconditions__c': '',
+														                                                                     'User_Story__c': ''})
                 event.setParams({"test" : response.getReturnValue()});
                 event.fire();
             }

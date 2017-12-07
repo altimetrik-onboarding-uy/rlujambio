@@ -1,0 +1,40 @@
+<aura:component controller="FStepController">
+  <aura:attribute name="newTestStep" type="Step__c" default="{'sobjectType': 'Step__c',
+                                                                   'Description__c': '',
+                                                                   'Expected_Result__c': ''}"/>
+  <aura:attribute name="selectedTC" type="Test_Case__c" />
+
+  <aura:handler event="c:sendFormTCEvent" action="{!c.getSelectedTC}" />
+
+  <aura:registerEvent name="refreshSteps" type="c:showStepForm" />
+
+  <div aria-labelledby="newteststepform" >
+
+    	<fieldset class="slds-box slds-theme--default slds-container--small">
+
+        <!-- CREATE NEW TEST STEP FORM -->
+        <form class="slds-form--stacked">
+            	<legend id="newtestcaseform" class="slds-text-heading--medium
+          			slds-p-vertical--medium">
+          			Add Test Case Step
+        		</legend>
+
+            <lightning:input aura:id="testcasestepform" label="Description"
+                             name="teststepDescription"
+                             required="true"
+                             value="{!v.newTestStep.Description__c}" />
+            <lightning:input aura:id="testcasestepform" label="Expected Result"
+                             name="teststepExpectedResult"
+                             required="true"
+                             value="{!v.newTestStep.Expected_Result__c}" />
+            <lightning:button label="Create Test Case Step"
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.handleNewTestStepClick}"/>
+        </form>
+        <!-- / CREATE NEW TEST STEP FORM -->
+      </fieldset>
+      <!-- / BOXED AREA -->
+    </div>
+<!-- / CREATE NEW TEST STEP -->
+</aura:component>
